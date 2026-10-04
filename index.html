@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EV Charging Station Finder & Booking</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+
+            <div class="logo">
+                ⚡ EV Charge Finder
+            </div>
+
+            <nav>
+                <a href="#top">Find Stations</a>
+                <a href="#booking">Find My Booking</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- Main -->
+    <main class="container">
+
+        <h1>Find a Charger</h1>
+
+        <p class="intro">
+            Search by city or station name, check available ports,
+            and book your charging slot.
+        </p>
+
+
+        <!-- Search -->
+        <section class="search-box">
+
+            <div class="field">
+                <label>City, Area or Station</label>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Coimbatore">
+            </div>
+
+
+            <div class="field">
+
+                <label>Connector</label>
+
+                <select id="connectorFilter">
+
+                    <option value="">Any Connector</option>
+
+                    <option value="CCS2">
+                        CCS2
+                    </option>
+
+                    <option value="CHAdeMO">
+                        CHAdeMO
+                    </option>
+
+                    <option value="Type 2">
+                        Type 2
+                    </option>
+
+                    <option value="Bharat AC-001">
+                        Bharat AC-001
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>Charging Speed</label>
+
+                <select id="powerFilter">
+
+                    <option value="0">
+                        Any Speed
+                    </option>
+
+                    <option value="7">
+                        7 kW and up
+                    </option>
+
+                    <option value="22">
+                        22 kW and up
+                    </option>
+
+                    <option value="50">
+                        50 kW and up
+                    </option>
+
+                    <option value="120">
+                        120 kW and up
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field checkbox-field">
+
+                <label>
+                    <input
+                        type="checkbox"
+                        id="freeFilter">
+
+                    Free ports right now
+                </label>
+
+            </div>
+
+
+            <button
+                class="search-btn"
+                onclick="searchStations()">
+
+                Search
+
+            </button>
+
+
+            <button
+                class="reset-btn"
+                onclick="resetSearch()">
+
+                Reset
+
+            </button>
+
+        </section>
+
+
+        <p id="stationCount" class="station-count">
+            8 stations found
+        </p>
+
+
+        <!-- Stations -->
+
+        <section id="stationList">
+
+
+            <!-- Station 1 -->
+
+            <div
+                class="station available"
+                data-name="Airport Road Supercharge"
+                data-city="Bengaluru"
+                data-connector="CCS2"
+                data-power="150"
+                data-free="6">
+
+                <div class="station-main">
+
+                    <h2>
+                        Airport Road Supercharge
+                    </h2>
+
+                    <p>
+                        📍 Airport Road, Gate 2, Bengaluru
+                    </p>
+
+                    <p class="meta">
+                        <span>CCS2</span>
+                        Open 24 hours
+                    </p>
+
+                </div>
+
+
+                <div class="power">
+
+                    <strong>150 kW</strong>
+
+                    <div class="gauge">
+                        <div class="gauge-fill five"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="price">
+
+                    <strong>₹23.00</strong>
+
+                    <small>per kWh</small>
+
+                </div>
+
+
+                <div class="station-action">
+
+                    <span class="badge available-badge">
+                        6 of 6 ports free
+                    </span>
+
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=12.959200,77.648000"
+                        target="_blank">
+
+                        Map
+
+                    </a>
+
+                    <button
+                        onclick="openBooking('Airport Road Supercharge')">
+
+                        Book a Slot
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Station 2 -->
+
+            <div
+                class="station available"
+                data-name="Garden City Type 2"
+                data-city="Bengaluru"
+                data-connector="Type 2"
+                data-power="22"
+                data-free="4">
+
+                <div class="station-main">
+
+                    <h2>
+                        Garden City Type 2
+                    </h2>
+
+                    <p>
+                        📍 21 Garden Street, Bengaluru
+                    </p>
+
+                    <p class="meta">
+                        <span>Type 2</span>
+                        Open 8:00 am to 8:00 pm
+                    </p>
+
+                </div>
+
+
+                <div class="power">
+
+                    <strong>22 kW</strong>
+
+                    <div class="gauge">
+                        <div class="gauge-fill two"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="price">
+
+                    <strong>₹13.50</strong>
+
+                    <small>per kWh</small>
+
+                </div>
+
+
+                <div class="station-action">
+
+                    <span class="badge available-badge">
+                        4 of 4 ports free
+                    </span>
+
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=12.935200,77.624500"
+                        target="_blank">
+
+                        Map
+
+                    </a>
+
+                    <button
+                        onclick="openBooking('Garden City Type 2')">
+
+                        Book a Slot
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Station 3 -->
+
+            <div
+                class="station available"
+                data-name="Marina Quick Charge"
+                data-city="Chennai"
+                data-connector="CHAdeMO"
+                data-power="50"
+                data-free="2">
+
+                <div class="station-main">
+
+                    <h2>
+                        Marina Quick Charge
+                    </h2>
+
+                    <p>
+                        📍 3 Beach Road, Chennai
+                    </p>
+
+                    <p class="meta">
+                        <span>CHAdeMO</span>
+                        Open 6:00 am to 11:00 pm
+                    </p>
+
+                </div>
+
+
+                <div class="power">
+
+                    <strong>50 kW</strong>
+
+                    <div class="gauge">
+                        <div class="gauge-fill three"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="price">
+
+                    <strong>₹19.50</strong>
+
+                    <small>per kWh</small>
+
+                </div>
+
+
+                <div class="station-action">
+
+                    <span class="badge available-badge">
+                        2 of 2 ports free
+                    </span>
+
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=13.050000,80.282400"
+                        target="_blank">
+
+                        Map
+
+                    </a>
+
+                    <button
+                        onclick="openBooking('Marina Quick Charge')">
+
+                        Book a Slot
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Station 4 -->
+
+            <div
+                class="station available"
+                data-name="Tech Park Slow Bay"
+                data-city="Chennai"
+                data-connector="Bharat AC-001"
+                data-power="7"
+                data-free="6">
+
+                <div class="station-main">
+
+                    <h2>
+                        Tech Park Slow Bay
+                    </h2>
+
+                    <p>
+                        📍 Block C, Tech Park, Chennai
+                    </p>
+
+                    <p class="meta">
+                        <span>Bharat AC-001</span>
+                        Open 7:00 am to 9:00 pm
+                    </p>
+
+                </div>
+
+
+                <div class="power">
+
+                    <strong>7 kW</strong>
+
+                    <div class="gauge">
+                        <div class="gauge-fill one"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="price">
+
+                    <strong>₹10.00</strong>
+
+                    <small>per kWh</small>
+
+                </div>
+
+
+                <div class="station-action">
+
+                    <span class="badge available-badge">
+                        6 of 6 ports free
+                    </span>
+
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=12.901000,80.227900"
+                        target="_blank">
+
+                        Map
+
+                    </a>
+
+                    <button
+                        onclick="openBooking('Tech Park Slow Bay')">
+
+                        Book a Slot
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Station 5 -->
+
+            <div
+                class="station available"
+                data-name="Highway Plaza DC"
+                data-city="Coimbatore"
+                data-connector="CCS2"
+                data-power="120"
+                data-free="2">
+
+                <div class="station-main">
+
+                    <h2>
+                        Highway Plaza DC
+                    </h2>
+
+                    <p>
+                        📍 NH 544 Service Road, Coimbatore
+                    </p>
+
+                    <p class="meta">
+                        <span>CCS2</span>
+                        Open 24 hours
+                    </p>
+
+                </div>
+
+
+                <div class="power">
+
+                    <strong>120 kW</strong>
+
+                    <div class="gauge">
+                        <div class="gauge-fill four"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="price">
+
+                    <strong>₹21.00</strong>
+
+                    <small>per kWh</small>
+
+                </div>
+
+
+                <div class="station-action">
+
+                    <span class="badge available-badge">
+                        2 of 2 ports free
+                    </span>
+
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=10.992500,77.023000"
+                        target="_blank">
+
+                        Map
+
+                    </a>
+
+                    <button
+                        onclick="openBooking('Highway Plaza DC')">
+
+                        Book a Slot
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Station 6 -->
+
+            <div
+                class="station available"
+                data-name="Junction Mall Chargers"
+                data-city="Coimbatore"
+                data-connector="Type 2"
+                data-power="22"
+                data-free="3">
+
+                <div class="station-main">
+
+                    <h2>
+                        Junction Mall Chargers
+                    </h2>
+
+                    <p>
+                        📍 Level B2, Junction Mall, Coimbatore
+                    </p>
+
+                    <p class="meta">
+                        <span>Type 2</span>
+                        Open 9:00 am to 10:00 pm
+                    </p>
+
+                </div>
+
+
+                <div class="power">
+
+                    <strong>22 kW</strong>
+
+                    <div class="gauge">
+                        <div class="gauge-fill two"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="price">
+
+                    <strong>₹14.00</strong>
+
+                    <small>per kWh</small>
+
+                </div>
+
+
+                <div class="station-action">
+
+                    <span class="badge available-badge">
+                        3 of 3 ports free
+                    </span>
+
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=11.018300,76.972500"
+                        target="_blank">
+
+                        Map
+
+                    </a>
+
+                    <button
+                        onclick="openBooking('Junction Mall Chargers')">
+
+                        Book a Slot
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Station 7 -->
+
+            <div
+                class="station available"
+                data-name="Lakeside Fast Hub"
+                data-city="Coimbatore"
+                data-connector="CCS2"
+                data-power="60"
+                data-free="4">
+
+                <div class="station-main">
+
+                    <h2>
+                        Lakeside Fast Hub
+                    </h2>
+
+                    <p>
+                        📍 14 Lake View Road, Coimbatore
+                    </p>
+
+                    <p class="meta">
+                        <span>CCS2</span>
+                        Open 24 hours
+                    </p>
+
+                </div>
+
+
+                <div class="power">
+
+                    <strong>60 kW</strong>
+
+                    <div class="gauge">
+                        <div class="gauge-fill three"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="price">
+
+                    <strong>₹18.00</strong>
+
+                    <small>per kWh</small>
+
+                </div>
+
+
+                <div class="station-action">
+
+                    <span class="badge available-badge">
+                        4 of 4 ports free
+                    </span>
+
+                    <a
+                        href="https://www.google.com/maps/search/?api=1&query=11.004400,76.976700"
+                        target="_blank">
+
+                        Map
+
+                    </a>
+
+                    <button
+                        onclick="openBooking('Lakeside Fast Hub')">
+
+                        Book a Slot
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Station 8 -->
+
+            <div
+                class="station offline"
+                data-name="Old Town Depot"
+                data-city="Madurai"
+                data-connector="CCS2"
+                data-power="30"
+                data-free="0">
+
+                <div class="station-main">
+
+                    <h2>
+                        Old Town Depot
+                    </h2>
+
+                    <p>
+                        📍 88 Market Street, Madurai
+                    </p>
+
+                    <p class="meta">
+                        <span>CCS2</span>
+                        Open 6:00 am to 10:00 pm
+                    </p>
+
+                </div>
+
+
+                <div class="power">
+
+                    <strong>30 kW</strong>
+
+                    <div class="gauge">
+                        <div class="gauge-fill three"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="price">
+
+                    <strong>₹16.00</strong>
+
+                    <small>per kWh</small>
+
+                </div>
+
+
+                <div class="station-action">
+
+                    <span class="badge offline-badge">
+                        Under Maintenance
+                    </span>
+
+                    <span class="disabled-btn">
+                        Not Bookable
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Booking Section -->
+
+        <section
+            id="booking"
+            class="booking-section">
+
+            <h1>Book Your Charging Slot</h1>
+
+            <p id="selectedStation">
+                Select a station above to start booking.
+            </p>
+
+
+            <div class="booking-card">
+
+                <h2>1. Choose a Day</h2>
+
+                <input
+                    type="date"
+                    id="bookingDate">
+
+
+                <h2>2. Choose a Start Time</h2>
+
+                <div class="time-slots">
+
+                    <button onclick="selectTime(this)">
+                        9:00 AM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        9:30 AM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        10:00 AM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        10:30 AM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        11:00 AM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        11:30 AM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        12:00 PM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        12:30 PM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        1:00 PM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        1:30 PM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        2:00 PM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        2:30 PM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        3:00 PM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        3:30 PM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        4:00 PM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        4:30 PM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        5:00 PM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        5:30 PM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        6:00 PM
+                    </button>
+
+                    <button onclick="selectTime(this)">
+                        6:30 PM
+                    </button>
+
+                </div>
+
+
+                <h2>3. How Long?</h2>
+
+                <select id="duration">
+
+                    <option value="30">
+                        30 Minutes
+                    </option>
+
+                    <option value="60">
+                        1 Hour
+                    </option>
+
+                    <option value="90">
+                        1 Hour 30 Minutes
+                    </option>
+
+                    <option value="120">
+                        2 Hours
+                    </option>
+
+                </select>
+
+
+                <h2>4. Your Details</h2>
+
+                <div class="form-grid">
+
+                    <div>
+                        <label>Full Name</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your name">
+                    </div>
+
+
+                    <div>
+                        <label>Email</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your email">
+                    </div>
+
+
+                    <div>
+                        <label>Phone</label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter phone number">
+                    </div>
+
+
+                    <div>
+                        <label>Vehicle</label>
+
+                        <input
+                            type="text"
+                            id="vehicle"
+                            placeholder="Vehicle number">
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="confirm-btn"
+                    onclick="confirmBooking()">
+
+                    Confirm Booking
+
+                </button>
+
+
+                <p id="bookingMessage"></p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 EV Charging Station Finder
+        </p>
+
+        <p>
+            Sample stations and prices are for demonstration.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
